@@ -1,4 +1,11 @@
 package com.ge.edc.devchapter.observerkata;
 
-public class WebsiteChart {
+import com.ge.edc.devchapter.observerkata.interfaces.Subscriber;
+
+public class WebsiteChart implements Subscriber {
+
+    @Override
+    public void update() {
+
+    }
 }

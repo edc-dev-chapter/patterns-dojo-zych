@@ -1,4 +1,11 @@
 package com.ge.edc.devchapter.observerkata;
 
-public class TvStrip {
+import com.ge.edc.devchapter.observerkata.interfaces.Subscriber;
+
+public class TvStrip implements Subscriber {
+
+    @Override
+    public void update() {
+
+    }
 }
