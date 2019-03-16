@@ -1,4 +1,4 @@
-package interfaces;
+package com.ge.edc.devchapter.observerkata.interfaces;
 
 public interface Subscriber {
 

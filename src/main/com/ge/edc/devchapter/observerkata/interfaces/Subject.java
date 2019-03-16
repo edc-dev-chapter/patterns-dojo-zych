@@ -1,6 +1,4 @@
-package interfaces;
-
-import java.util.ArrayList;
+package com.ge.edc.devchapter.observerkata.interfaces;
 
 public interface Subject {
 
