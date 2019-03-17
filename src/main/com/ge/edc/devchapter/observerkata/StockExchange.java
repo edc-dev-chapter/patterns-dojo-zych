@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import java.util.ArrayList;
+
 public class StockExchange implements Subject {
     private Map<String, Double> exchangeRates;
     private Map<String, Double> indices;
@@ -14,10 +16,12 @@ public class StockExchange implements Subject {
 
     @Override
     public void addSubscriber(Subscriber subscriber) {
+        subscribers.add(subscriber);
     }
 
     @Override
     public void removeSubscriber(Subscriber subscriber) {
+        subscribers.remove(subscriber);
     }
 
     @Override
