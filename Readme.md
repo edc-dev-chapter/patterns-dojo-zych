@@ -19,3 +19,13 @@ changes to existing channels or Stock Market class.
 ###How To start
 This branch is just a starting point. To go to first step - checkout branch `observer-step1` and 
 follow instructions in updated Readme.
+
+
+###Step1
+Run tests found in Tests.java. Tests will fail. 
+Your job is to make tests pass. You cannot change implementation of tests, but you have to change
+implementation of existing classes. In this step implement correct interfaces in classes
+* StockExchange
+* SmartphoneApp
+* TvStrip
+* WebsiteChart
