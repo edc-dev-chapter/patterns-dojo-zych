@@ -36,3 +36,5 @@ to implement required behaviour. Class StockExchange has now a collection that c
 channels that are subscribed to receive its state changes. Your job is to implement methods that will 
 allow subscribers to add themselves to this subscribers list as well as add possibility to get him out of it.
 
+### Step 3
+Now, your experience with Observer pattern is robust.  

@@ -69,4 +69,15 @@ class Tests {
 
         assertEquals(1, stockExchange.subscribers.size());
     }
+
+    @Test
+    public void StockExchangeShouldNotifyAllSubscribers() {
+        StockExchange stockExchange = new StockExchange();
+        stockExchange.addSubscriber(new SmartphoneApp());
+        stockExchange.addSubscriber(new TvStrip());
+        stockExchange.addSubscriber(new WebsiteChart());
+
+        assertTrue(false);
+
+    }
 }
