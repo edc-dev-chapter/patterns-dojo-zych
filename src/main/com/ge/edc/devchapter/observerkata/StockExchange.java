@@ -28,4 +28,20 @@ public class StockExchange implements Subject {
     public void notifySubscribers() {
 
     }
+
+    public Map<String, Double> getExchangeRates() {
+        return exchangeRates;
+    }
+
+    public void setExchangeRates(Map<String, Double> exchangeRates) {
+        this.exchangeRates = exchangeRates;
+    }
+
+    public Map<String, Double> getIndices() {
+        return indices;
+    }
+
+    public void setIndices(Map<String, Double> indices) {
+        this.indices = indices;
+    }
 }
