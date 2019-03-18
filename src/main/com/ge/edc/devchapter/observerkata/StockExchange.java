@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class StockExchange implements Subject {
     private Map<String, Double> exchangeRates;
