@@ -13,28 +13,28 @@ import static org.junit.jupiter.api.Assertions.*;
 class Tests {
 
     @Test
-    public void classSmartphoneAppImplementsSubscriber(){
+    public void classSmartphoneAppImplementsSubscriber() {
         SmartphoneApp smartphoneApp = new SmartphoneApp();
 
         assertTrue(smartphoneApp instanceof Subscriber);
     }
 
     @Test
-    public void classTvStripImplementsSubscriber(){
+    public void classTvStripImplementsSubscriber() {
         TvStrip tvStrip = new TvStrip();
 
         assertTrue(tvStrip instanceof Subscriber);
     }
 
     @Test
-    public void classWebsiteChartImplementsSubscriber(){
+    public void classWebsiteChartImplementsSubscriber() {
         WebsiteChart websiteChart = new WebsiteChart();
 
         assertTrue(websiteChart instanceof Subscriber);
     }
 
     @Test
-    public void classStockExchangeImplementsSubject(){
+    public void classStockExchangeImplementsSubject() {
         WebsiteChart websiteChart = new WebsiteChart();
 
         assertTrue(websiteChart instanceof Subscriber);
@@ -43,7 +43,7 @@ class Tests {
     @Test
     public void StockExchangeAcceptsNewSubscribers() {
         StockExchange stockExchange = new StockExchange();
-        stockExchange.addSubscriber((a, b)->{});
+        stockExchange.addSubscriber((a, b) -> null);
 
         assertEquals(1, stockExchange.subscribers.size());
     }
@@ -51,7 +51,7 @@ class Tests {
     @Test
     public void StockExchangeShouldRemoveExistingSubscribers() {
         StockExchange stockExchange = new StockExchange();
-        stockExchange.addSubscriber((a, b)->{});
+        stockExchange.addSubscriber((a, b) -> null);
         stockExchange.removeSubscriber(stockExchange.subscribers.get(0));
 
         assertEquals(0, stockExchange.subscribers.size());
@@ -61,10 +61,10 @@ class Tests {
     @Test
     public void StockExchangeShouldNotRemoveSubscriberIfNotSubscribed() {
         StockExchange stockExchange = new StockExchange();
-        Subscriber sub = (a, b)->{};
-        stockExchange.addSubscriber((a, b)->{});
+        Subscriber sub = (a, b) -> null;
+        stockExchange.addSubscriber((a, b) -> null);
         stockExchange.addSubscriber(sub);
-        stockExchange.removeSubscriber((a, b)->{});
+        stockExchange.removeSubscriber((a, b) -> null);
         stockExchange.removeSubscriber(sub);
 
         assertEquals(1, stockExchange.subscribers.size());
