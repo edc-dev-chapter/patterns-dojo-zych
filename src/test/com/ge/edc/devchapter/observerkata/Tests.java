@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.annotation.processing.SupportedAnnotationTypes;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -71,13 +72,27 @@ class Tests {
     }
 
     @Test
-    public void StockExchangeShouldNotifyAllSubscribers() {
+    public void StockExchangeShouldNotifyAllSubscribersWhenExchangeRatesChanged() {
         StockExchange stockExchange = new StockExchange();
         stockExchange.addSubscriber(new SmartphoneApp());
         stockExchange.addSubscriber(new TvStrip());
         stockExchange.addSubscriber(new WebsiteChart());
 
-        assertTrue(false);
+        stockExchange.setExchangeRates(Collections.singletonMap("Test", 1.1));
+
+    }
+
+    @Test
+    public void StockExchangeShouldNotifyAllSubscribersWhenIndicesChanged() {
+        StockExchange stockExchange = new StockExchange();
+        Subscriber smartphoneApp = new SmartphoneApp();
+        Subscriber tvStrip = new TvStrip();
+        Subscriber chart = new WebsiteChart();
+        stockExchange.addSubscriber(smartphoneApp);
+        stockExchange.addSubscriber(tvStrip);
+        stockExchange.addSubscriber(chart);
+
+        stockExchange.setIndices(Collections.singletonMap("IndicesTest", 1.1));
 
     }
 }
