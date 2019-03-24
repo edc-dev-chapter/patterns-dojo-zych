@@ -1,6 +1,7 @@
 package com.ge.edc.devchapter.observerkata;
 
 import com.ge.edc.devchapter.observerkata.interfaces.Subscriber;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -12,8 +13,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.eq;
 
 class Tests {
+
+    HashMap<String, Double> indices = new HashMap<>();
+    HashMap<String, Double> rates = new HashMap<>();
+
+
+    @BeforeEach
+    public void prepareCollections(){
+
+        rates.put("ZychoCorp", 1000.234);
+        rates.put("SolInvictus", 43.4432);
+        rates.put("EDC", 34.4342);
+
+        indices.put("WIG20", 20d);
+        indices.put("wig30", 13.43);
+        indices.put("RESPECT", 43.);
+    }
 
     @Test
     public void classSmartphoneAppImplementsSubscriber() {
@@ -87,27 +105,37 @@ class Tests {
     @Test
     public void StockExchangeShouldNotifyAllSubscribersWhenExchangeRatesChanged() {
         StockExchange stockExchange = new StockExchange();
-        stockExchange.addSubscriber(new SmartphoneApp());
-        stockExchange.addSubscriber(new TvStrip());
-        stockExchange.addSubscriber(new WebsiteChart());
+        Subscriber smartphoneApp = Mockito.spy(new SmartphoneApp());
+        Subscriber tvStrip = Mockito.spy(new TvStrip());
+        Subscriber chart = Mockito.spy(new WebsiteChart());
+        stockExchange.addSubscriber(smartphoneApp);
+        stockExchange.addSubscriber(tvStrip);
+        stockExchange.addSubscriber(chart);
 
-        stockExchange.setExchangeRates(Collections.singletonMap("Test", 1.1));
+        stockExchange.setExchangeRates(rates);
+
+        Mockito.verify(smartphoneApp).update(eq(rates), eq(indices));
+        Mockito.verify(tvStrip).update(eq(rates), eq(indices));
+        Mockito.verify(chart).update(eq(rates), eq(indices));
 
     }
 
     @Test
     public void StockExchangeShouldNotifyAllSubscribersWhenIndicesChanged() {
+
         StockExchange stockExchange = new StockExchange();
-        Subscriber smartphoneApp = new SmartphoneApp();
-        Subscriber tvStrip = new TvStrip();
-        Subscriber chart = new WebsiteChart();
+        Subscriber smartphoneApp = Mockito.spy(new SmartphoneApp());
+        Subscriber tvStrip = Mockito.spy(new TvStrip());
+        Subscriber chart = Mockito.spy(new WebsiteChart());
         stockExchange.addSubscriber(smartphoneApp);
         stockExchange.addSubscriber(tvStrip);
         stockExchange.addSubscriber(chart);
 
-        stockExchange.setIndices(Collections.singletonMap("IndicesTest", 1.1));
+        stockExchange.setIndices(indices);
 
-        assertTrue(false);
+        Mockito.verify(smartphoneApp).update(eq(rates), eq(indices));
+        Mockito.verify(tvStrip).update(eq(rates), eq(indices));
+        Mockito.verify(chart).update(eq(rates), eq(indices));
 
     }
 }
