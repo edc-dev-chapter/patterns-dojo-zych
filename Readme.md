@@ -30,11 +30,16 @@ implementation of existing classes. In this step implement correct interfaces in
 * TvStrip
 * WebsiteChart
 
+If your tests are passing, go ahead and checkout `observer-step2` branch and read Readme document.
+
+
 ### Step2
 Tests are failing again. You have to use your knowledge about **observer pattern**
 to implement required behaviour. Class StockExchange has now a collection that can keep information about all 
 channels that are subscribed to receive its state changes. Your job is to implement methods that will 
 allow subscribers to add themselves to this subscribers list as well as add possibility to get him out of it.
+
+If your tests are passing, go ahead and checkout `observer-step3` branch and read Readme document.
 
 ### Step 3
 Now, your experience with Observer pattern is robust. 
