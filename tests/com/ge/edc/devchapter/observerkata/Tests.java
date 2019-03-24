@@ -34,6 +34,4 @@ class Tests {
 
         assertTrue(websiteChart instanceof Subscriber);
     }
-
-
 }
