@@ -44,7 +44,7 @@ class Tests {
     @Test
     public void StockExchangeAcceptsNewSubscribers() {
         StockExchange stockExchange = new StockExchange();
-        stockExchange.addSubscriber((a, b) -> null);
+        stockExchange.addSubscriber((a, b) -> {});
 
         assertEquals(1, stockExchange.subscribers.size());
     }
@@ -52,7 +52,7 @@ class Tests {
     @Test
     public void StockExchangeShouldRemoveExistingSubscribers() {
         StockExchange stockExchange = new StockExchange();
-        stockExchange.addSubscriber((a, b) -> null);
+        stockExchange.addSubscriber((a, b) -> {});
         stockExchange.removeSubscriber(stockExchange.subscribers.get(0));
 
         assertEquals(0, stockExchange.subscribers.size());
@@ -62,10 +62,10 @@ class Tests {
     @Test
     public void StockExchangeShouldNotRemoveSubscriberIfNotSubscribed() {
         StockExchange stockExchange = new StockExchange();
-        Subscriber sub = (a, b) -> null;
-        stockExchange.addSubscriber((a, b) -> null);
+        Subscriber sub = (a, b) -> {};
+        stockExchange.addSubscriber((a, b) -> {});
         stockExchange.addSubscriber(sub);
-        stockExchange.removeSubscriber((a, b) -> null);
+        stockExchange.removeSubscriber((a, b) -> {});
         stockExchange.removeSubscriber(sub);
 
         assertEquals(1, stockExchange.subscribers.size());
