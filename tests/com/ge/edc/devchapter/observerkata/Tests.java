@@ -2,10 +2,12 @@ package com.ge.edc.devchapter.observerkata;
 
 import com.ge.edc.devchapter.observerkata.interfaces.Subscriber;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import javax.annotation.processing.SupportedAnnotationTypes;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -104,6 +106,8 @@ class Tests {
         stockExchange.addSubscriber(chart);
 
         stockExchange.setIndices(Collections.singletonMap("IndicesTest", 1.1));
+
+        assertTrue(false);
 
     }
 }

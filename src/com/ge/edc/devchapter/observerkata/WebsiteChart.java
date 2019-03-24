@@ -9,6 +9,14 @@ public class WebsiteChart implements Subscriber {
 
     @Override
     public void update(Map<String, Double> exchangeRates, Map<String, Double> indices) {
-        throw new NotImplementedException();
+        displayCharts(indices);
+    }
+
+    private void displayCharts(Map<String, Double> indices) {
+        indices.forEach((i, v) -> {
+            System.out.println(
+                    String.format("Updating chart of index %s with value %.2f", i, v)
+            );
+        });
     }
 }

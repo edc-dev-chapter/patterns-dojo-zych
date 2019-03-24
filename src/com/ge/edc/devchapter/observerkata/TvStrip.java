@@ -9,6 +9,12 @@ public class TvStrip implements Subscriber {
 
     @Override
     public void update(Map<String, Double> exchangeRates, Map<String, Double> indices) {
-        throw new NotImplementedException();
+        displayStripOnTv(exchangeRates);
+    }
+
+    private void displayStripOnTv(Map<String, Double> exchangeRates) {
+        exchangeRates.forEach((c, r) -> {
+            System.out.printf("| %s: %.2f | ", c, r);
+        });
     }
 }
