@@ -94,11 +94,18 @@ class Tests {
     @Test
     public void StockExchangeShouldNotifyAllSubscribers() {
         StockExchange stockExchange = new StockExchange();
-        stockExchange.addSubscriber(new SmartphoneApp());
-        stockExchange.addSubscriber(new TvStrip());
-        stockExchange.addSubscriber(new WebsiteChart());
+        Subscriber smartphoneApp = Mockito.spy(new SmartphoneApp());
+        Subscriber tvStrip = Mockito.spy(new TvStrip());
+        Subscriber chart = Mockito.spy(new WebsiteChart());
+        stockExchange.addSubscriber(smartphoneApp);
+        stockExchange.addSubscriber(tvStrip);
+        stockExchange.addSubscriber(chart);
 
-        assertTrue(false);
+        stockExchange.notifySubscribers();
+        
+        Mockito.verify(smartphoneApp).update(eq(rates), eq(indices));
+        Mockito.verify(tvStrip).update(eq(rates), eq(indices));
+        Mockito.verify(chart).update(eq(rates), eq(indices));
 
     }
 
