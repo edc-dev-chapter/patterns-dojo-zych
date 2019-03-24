@@ -8,7 +8,7 @@ import java.util.Map;
 public class TvStrip implements Subscriber {
 
     @Override
-    public String update(Map<String, Double> exchangeRates, Map<String, Double> indices) {
+    public void update(Map<String, Double> exchangeRates, Map<String, Double> indices) {
         throw new NotImplementedException();
     }
 }
