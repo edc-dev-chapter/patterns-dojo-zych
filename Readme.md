@@ -1,6 +1,6 @@
-#Observer Pattern Dojo
+# Observer Pattern Dojo
 
-###Description
+### Description
 We have a Stock Exchange market that is represented by class StockExchange.
 This StockExchange class have information about many share prices and stock market indices.
 You shouldn't be worried about how this class gets information - this is delivered by third party. 
@@ -11,17 +11,17 @@ any other channel that will appear has to have possibility to get data from Stoc
 changes to existing channels or Stock Market class.   
  
 
-###Requirements
+### Requirements
  * Maven (we will use JUnit 4 and Mockito)
  * JDK 8+ 
 
 
-###How To start
+### How To start
 This branch is just a starting point. To go to first step - checkout branch `observer-step1` and 
 follow instructions in updated Readme.
 
 
-###Step1
+### Step1
 Run tests found in Tests.java. Tests will fail. 
 Your job is to make tests pass. You cannot change implementation of tests, but you have to change
 implementation of existing classes. In this step implement correct interfaces in classes
@@ -29,3 +29,5 @@ implementation of existing classes. In this step implement correct interfaces in
 * SmartphoneApp
 * TvStrip
 * WebsiteChart
+
+If your tests are passing, go ahead and checkout `observer-step2` branch and read Readme document.
