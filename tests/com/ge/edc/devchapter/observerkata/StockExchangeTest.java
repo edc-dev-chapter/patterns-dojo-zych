@@ -12,10 +12,4 @@ public class StockExchangeTest {
         StockExchange stockExchange = new StockExchange();
         assertNotNull(stockExchange);
     }
-
-    @Test
-    public void testOfTests() {
-        String asd = String.format("%s: %.2f", "asd", 90.548674);
-        System.out.println(asd);
-    }
 }
