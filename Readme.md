@@ -33,7 +33,7 @@ implementation of existing classes. In this step implement correct interfaces in
 If your tests are passing, go ahead and checkout `observer-step2` branch and read Readme document.
 
 
-###Step2
+### Step2
 Tests are failing again. You have to use your knowledge about **observer pattern**
 to implement required behaviour. Class StockExchange has now a collection that can keep information about all 
 channels that are subscribed to receive its state changes. Your job is to implement methods that will 
