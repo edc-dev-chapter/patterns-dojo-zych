@@ -12,8 +12,8 @@ changes to existing channels or Stock Market class.
  
 
 ###Requirements
+ * Maven (we will use JUnit 4 and Mockito)
  * JDK 8+ 
- * JUnit 4
 
 
 ###How To start
