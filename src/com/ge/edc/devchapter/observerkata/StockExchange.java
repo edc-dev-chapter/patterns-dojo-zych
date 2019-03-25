@@ -27,7 +27,7 @@ public class StockExchange implements Subject {
 
     @Override
     public void notifySubscribers() {
-
+        subscribers.forEach(s -> {s.update(exchangeRates, indices);});
     }
 
     public Map<String, Double> getExchangeRates() {
@@ -36,6 +36,7 @@ public class StockExchange implements Subject {
 
     public void setExchangeRates(Map<String, Double> exchangeRates) {
         this.exchangeRates = exchangeRates;
+        notifySubscribers();
     }
 
     public Map<String, Double> getIndices() {
@@ -44,5 +45,6 @@ public class StockExchange implements Subject {
 
     public void setIndices(Map<String, Double> indices) {
         this.indices = indices;
+        notifySubscribers();
     }
 }

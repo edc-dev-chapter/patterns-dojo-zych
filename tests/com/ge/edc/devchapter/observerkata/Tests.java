@@ -27,10 +27,6 @@ class Tests {
         rates.put("ZychoCorp", 1000.234);
         rates.put("SolInvictus", 43.4432);
         rates.put("EDC", 34.4342);
-
-        indices.put("WIG20", 20d);
-        indices.put("wig30", 13.43);
-        indices.put("RESPECT", 43.);
     }
 
     @Test
@@ -102,7 +98,7 @@ class Tests {
         stockExchange.addSubscriber(chart);
 
         stockExchange.notifySubscribers();
-        
+
         Mockito.verify(smartphoneApp).update(eq(rates), eq(indices));
         Mockito.verify(tvStrip).update(eq(rates), eq(indices));
         Mockito.verify(chart).update(eq(rates), eq(indices));
@@ -129,6 +125,9 @@ class Tests {
 
     @Test
     public void StockExchangeShouldNotifyAllSubscribersWhenIndicesChanged() {
+        indices.put("WIG20", 20d);
+        indices.put("wig30", 13.43);
+        indices.put("RESPECT", 43.);
 
         StockExchange stockExchange = new StockExchange();
         Subscriber smartphoneApp = Mockito.spy(new SmartphoneApp());
