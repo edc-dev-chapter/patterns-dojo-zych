@@ -1,21 +1,12 @@
 package com.ge.edc.devchapter.observerkata;
 
 import com.ge.edc.devchapter.observerkata.interfaces.Subscriber;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.junit.Test;
 
-import javax.annotation.processing.SupportedAnnotationTypes;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.eq;
-
-class Tests {
+public class Tests {
 
     HashMap<String, Double> indices = new HashMap<>();
     HashMap<String, Double> rates = new HashMap<>();
