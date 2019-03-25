@@ -1,16 +1,15 @@
 package com.ge.edc.devchapter.observerkata;
 
 import com.ge.edc.devchapter.observerkata.interfaces.Subscriber;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
+import static org.junit.Assert.assertTrue;
 import javax.annotation.processing.SupportedAnnotationTypes;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class Tests {
+public class Tests {
 
     @Test
     public void classSmartphoneAppImplementsSubscriber() {
