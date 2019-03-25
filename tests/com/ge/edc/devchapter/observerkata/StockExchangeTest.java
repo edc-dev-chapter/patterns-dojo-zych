@@ -1,7 +1,7 @@
 package com.ge.edc.devchapter.observerkata;
 
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
