@@ -49,3 +49,6 @@ Do it by modifying only Subject class.
 
 Now you don't care about subscribers (as StockExchange does not care about who receives its data) so please
 do not modify any class of type `Subscriber`.
+
+### Step 4
+All right. You have mastered Observer Pattern. But this is just a beginning. Stay tuned.

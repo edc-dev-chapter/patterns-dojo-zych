@@ -31,21 +31,26 @@ public class StockExchange implements Subject {
 
     @Override
     public void notifySubscribers() {
+        subscribers.forEach(s -> {s.update(exchangeRates, indices);});
     }
 
     public void setExchangeRates(Map<String, Double> exchangeRates) {
         this.exchangeRates = exchangeRates;
+        notifySubscribers();
     }
 
     public void setIndices(Map<String, Double> indices) {
         this.indices = indices;
+        notifySubscribers();
     }
 
     public void updateExchangeRate(String company, Double rate) {
         this.exchangeRates.put(company, rate);
+        notifySubscribers();
     }
 
     public void updateIndex(String indexName, Double rate) {
         this.indices.put(indexName, rate);
+        notifySubscribers();
     }
 }
