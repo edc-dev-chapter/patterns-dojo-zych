@@ -3,11 +3,8 @@ package com.ge.edc.devchapter.observerkata;
 import com.ge.edc.devchapter.observerkata.interfaces.Subscriber;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import javax.annotation.processing.SupportedAnnotationTypes;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class Tests {
 
