@@ -43,6 +43,9 @@ If your tests are passing, go ahead and checkout `observer-step3` branch and rea
 
 ### Step 3
 Now, your experience with Observer pattern is robust. 
-Some third party now uses setters in StockExchange class to set new exchange rates. Your job is to notify all clients
-of StockExchange that the state of this class is changed and the views should be updated. Do it by modifying only 
-Subject class. Now you don't care about subscribers (as StockEchange does not care about who reads its data).  
+Some third party now uses methods in StockExchange class to set new exchange rates or update existing. Your job is 
+to notify all clients of StockExchange that the state of this class is changed and the views should be updated. 
+Do it by modifying only Subject class.
+
+Now you don't care about subscribers (as StockExchange does not care about who receives its data) so please
+do not modify any class of type `Subscriber`.

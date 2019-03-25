@@ -1,8 +1,6 @@
 package com.ge.edc.devchapter.observerkata;
 
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
@@ -14,7 +12,7 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class ObserversTests {
 
-    PrintStream out;
+    private PrintStream out;
 
     @Test
     public void tvStripTest() {

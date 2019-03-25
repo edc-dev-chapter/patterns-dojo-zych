@@ -1,20 +1,28 @@
 package com.ge.edc.devchapter.observerkata;
 
 import com.ge.edc.devchapter.observerkata.interfaces.Subscriber;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 
 public class Tests {
 
-    HashMap<String, Double> indices = new HashMap<>();
-    HashMap<String, Double> rates = new HashMap<>();
+    private HashMap<String, Double> indices = new HashMap<>();
+    private HashMap<String, Double> rates = new HashMap<>();
 
 
-    @BeforeEach
+    @Before
     public void prepareCollections(){
-
+        indices.put("WIG20", 20d);
+        indices.put("wig30", 13.43);
+        indices.put("RESPECT", 43.);
         rates.put("ZychoCorp", 1000.234);
         rates.put("SolInvictus", 43.4432);
         rates.put("EDC", 34.4342);
@@ -90,9 +98,9 @@ public class Tests {
 
         stockExchange.notifySubscribers();
 
-        Mockito.verify(smartphoneApp).update(eq(rates), eq(indices));
-        Mockito.verify(tvStrip).update(eq(rates), eq(indices));
-        Mockito.verify(chart).update(eq(rates), eq(indices));
+        Mockito.verify(tvStrip).update(any(), any());
+        Mockito.verify(smartphoneApp).update(any(), any());
+        Mockito.verify(chart).update(any(), any());
 
     }
 
@@ -108,17 +116,14 @@ public class Tests {
 
         stockExchange.setExchangeRates(rates);
 
-        Mockito.verify(smartphoneApp).update(eq(rates), eq(indices));
-        Mockito.verify(tvStrip).update(eq(rates), eq(indices));
-        Mockito.verify(chart).update(eq(rates), eq(indices));
+        Mockito.verify(smartphoneApp).update(eq(rates), any());
+        Mockito.verify(tvStrip).update(eq(rates), any());
+        Mockito.verify(chart).update(eq(rates), any());
 
     }
 
     @Test
     public void StockExchangeShouldNotifyAllSubscribersWhenIndicesChanged() {
-        indices.put("WIG20", 20d);
-        indices.put("wig30", 13.43);
-        indices.put("RESPECT", 43.);
 
         StockExchange stockExchange = new StockExchange();
         Subscriber smartphoneApp = Mockito.spy(new SmartphoneApp());
@@ -130,9 +135,52 @@ public class Tests {
 
         stockExchange.setIndices(indices);
 
-        Mockito.verify(smartphoneApp).update(eq(rates), eq(indices));
-        Mockito.verify(tvStrip).update(eq(rates), eq(indices));
-        Mockito.verify(chart).update(eq(rates), eq(indices));
+        Mockito.verify(smartphoneApp).update(any(), eq(indices));
+        Mockito.verify(tvStrip).update(any(), eq(indices));
+        Mockito.verify(chart).update(any(), eq(indices));
+
+    }
+
+    @Test
+    public void StockExchangeShouldNotifyAllSubscribersWhenIndicesUpdated() {
+
+        StockExchange stockExchange = new StockExchange();
+        stockExchange.setIndices(indices);
+        Subscriber smartphoneApp = Mockito.spy(new SmartphoneApp());
+        Subscriber tvStrip = Mockito.spy(new TvStrip());
+        Subscriber chart = Mockito.spy(new WebsiteChart());
+        stockExchange.addSubscriber(smartphoneApp);
+        stockExchange.addSubscriber(tvStrip);
+        stockExchange.addSubscriber(chart);
+
+        stockExchange.updateIndex("CoolnessIndex" , 123.333);
+        HashMap<String, Double> newIndices = new HashMap<>(indices);
+        newIndices.put("CoolnessIndex", 123.333);
+        Mockito.verify(smartphoneApp).update(any(), eq(newIndices));
+        Mockito.verify(tvStrip).update(any(), eq(newIndices));
+        Mockito.verify(chart).update(any(), eq(newIndices));
+
+    }
+
+    @Test
+    public void StockExchangeShouldNotifyAllSubscribersWhenRatesUpdated() {
+
+        StockExchange stockExchange = new StockExchange();
+        stockExchange.setExchangeRates(rates);
+        Subscriber smartphoneApp = Mockito.spy(new SmartphoneApp());
+        Subscriber tvStrip = Mockito.spy(new TvStrip());
+        Subscriber chart = Mockito.spy(new WebsiteChart());
+        stockExchange.addSubscriber(smartphoneApp);
+        stockExchange.addSubscriber(tvStrip);
+        stockExchange.addSubscriber(chart);
+
+        stockExchange.updateExchangeRate("CoolCorp" , 123.333);
+        HashMap<String, Double> newRates = new HashMap<>(rates);
+        newRates.put("CoolCorp" , 123.333);
+
+        Mockito.verify(smartphoneApp).update(eq(newRates), any());
+        Mockito.verify(tvStrip).update(eq(newRates), any());
+        Mockito.verify(chart).update(eq(newRates), any());
 
     }
 }
