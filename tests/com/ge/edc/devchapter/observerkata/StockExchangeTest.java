@@ -12,5 +12,4 @@ public class StockExchangeTest {
         StockExchange stockExchange = new StockExchange();
         assertNotNull(stockExchange);
     }
-
 }
